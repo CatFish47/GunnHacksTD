@@ -13,6 +13,7 @@ The first two will be necessary to ensure that the process works. Atom is just a
 2. Clone the repo from GitHub. If you downloaded GitHub desktop, they make this super easy by just pressing on the green button that says "Clone or download" then pressing "Open in Desktop"
 
 3. Next, go to your terminal to navigate to where the folder project is.
+- cd "insert path here" (ie. Documents\Github\GunnHacksTD)
 
 4. Initialize stuff
 - Type "git init" and press enter.

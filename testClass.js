@@ -39,5 +39,6 @@ class SpecificEnemyExample extends Enemy {
     this.image = new Image();
     this.image.src = "http://gunnhacks.com/img/logo.png";
     this.spd = 10; // How fast the unit moves per tick
+    this.moneyGained = 0;
   }
 }

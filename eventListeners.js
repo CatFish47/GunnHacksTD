@@ -20,15 +20,15 @@ document.getElementById("board").addEventListener("mousemove", function(e) {
 })
 
 document.addEventListener("click", function(e) {
-  for (var row = 1; row < board.board.length - 1; row++) {
-    for (var col = 1; col < board.board[row].length - 1; col++) {
+  for (var row = 0; row < board.board.length - 1; row++) {
+    for (var col = 0; col < board.board[row].length - 1; col++) {
       if (mouseX > boardTopLeft.x + (1 + 40 * (row)) &&
           mouseX < boardTopLeft.x + (1 + 40 * (row + 1)) &&
           mouseY > boardTopLeft.y + (1 + 40 * (col - 1)) &&
           mouseY < boardTopLeft.y + (1 + 40 * (col)))
       {
         if (storedUnit == "") {
-
+          console.log(row, col)
         } else if (storedUnit == "new Wall();") {
           board.board[row + 1][col].placeWall();
           recalculateRoute();

@@ -5,18 +5,10 @@ class Wall {
     this.image.src = "images/WALl.png";
     this.cost = 50;
   }
-
-  attack() { // This is here and not in the Unit class because each tower has a special attack
-
-  }
 }
 
 class Unit {
   constructor() {}
-
-  someBasicFunctionAllUnitsDo() {
-
-  }
 }
 
 class Gunner extends Unit {
@@ -24,7 +16,6 @@ class Gunner extends Unit {
     super();
     this.name = "Gunner";
     this.range = 4;
-
     this.dmg = 2;
     this.delay = 0.2; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
@@ -33,7 +24,7 @@ class Gunner extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
-
+    var inRange = this.scanEnemies(this.range);
   }
 }
 

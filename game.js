@@ -11,6 +11,10 @@ function drawTiles() {
     for (var col = 1; col < board.board[row].length - 1; col++) {
       context.drawImage(board.board[row][col].tile, boardTopLeft.x + (1 + 40 * (row - 1)), boardTopLeft.y + (1 + 40 * (col - 1)), 39, 39);
       context.drawImage(board.board[row][col].border, boardTopLeft.x + (1 + 40 * (row - 1)), boardTopLeft.y + (1 + 40 * (col - 1)), 41, 41);
+
+      if (board.board[row][col].unit) {
+        context.drawImage(board.board[row][col].unit.image, boardTopLeft.x + (1 + 40 * (row - 1)), boardTopLeft.y + (1 + 40 * (col - 1)), 41, 41);
+      }
     }
   }
 }
@@ -59,7 +63,13 @@ function draw() {
 }
 
 function update() {
-
+  for (var row in board.board) {
+    for (var col in board.board[row]) {
+      if (board.board[row][col].unit) {
+        board.board[row][col].attack();
+      }
+    }
+  }
 }
 
 function animate() {

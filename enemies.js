@@ -8,6 +8,7 @@ class Enemy {
 
 class SmallEnemy extends Enemy {
   constructor() {
+    super();
     this.name = "SmallEnemy";
     this.lives = 1; // How many lives die if the enemy gets past
     this.hp = 75;
@@ -19,6 +20,7 @@ class SmallEnemy extends Enemy {
 }
 class MediumEnemy extends Enemy {
   constructor() {
+    super();
     this.name = "MediumEnemy";
     this.lives = 2; // How many lives die if the enemy gets past
     this.hp = 160;
@@ -30,6 +32,7 @@ class MediumEnemy extends Enemy {
 }
 class LargeEnemy extends Enemy {
   constructor() {
+    super();
     this.name = "LargeEnemy";
     this.lives = 4; // How many lives die if the enemy gets past
     this.hp = 270;
@@ -41,6 +44,7 @@ class LargeEnemy extends Enemy {
 }
 class Sprinter extends Enemy {
   constructor() {
+    super();
     this.name = "Sprinter";
     this.lives = 1; // How many lives die if the enemy gets past
     this.hp = 100;
@@ -52,6 +56,7 @@ class Sprinter extends Enemy {
 }
 class Tank extends Enemy {
   constructor() {
+    super();
     this.name = "Tank";
     this.lives = 4; // How many lives die if the enemy gets past
     this.hp = 500;
@@ -63,6 +68,7 @@ class Tank extends Enemy {
 }
 class AmmoredTank extends Enemy {
   constructor() {
+    super();
     this.name = "AmmoredTank";
     this.lives = 4; // How many lives die if the enemy gets past
     this.hp = 800;
@@ -74,6 +80,7 @@ class AmmoredTank extends Enemy {
 }
 class Flyer extends Enemy {
   constructor() {
+    super();
     this.name = "Flyer";
     this.lives = 2; // How many lives die if the enemy gets past
     this.hp = 250;
@@ -85,6 +92,7 @@ class Flyer extends Enemy {
 }
 class TheUltimateBoss extends Enemy {
   constructor() {
+    super();
     this.name = "TheUltimateBoss";
     this.lives = 20; // How many lives die if the enemy gets past
     this.hp = 1600;

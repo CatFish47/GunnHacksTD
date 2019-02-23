@@ -110,7 +110,7 @@ class Board {
   checkSurroundingTilesSetup(x, y, counter, maze) { // Helps the solveMaze() function
     var tiles = [];
 
-    if (maze[x-1][y-1] == -1) {tiles.push(new Tile(x-1,y-1));}
+    if (maze[x][y-1] == -1) {tiles.push(new Tile(x,y-1));}
     if (maze[x+1][y] == -1) {tiles.push(new Tile(x+1,y));}
     if (maze[x][y+1] == -1) {tiles.push(new Tile(x,y+1));}
     if (maze[x-1][y] == -1) {tiles.push(new Tile(x-1,y));}

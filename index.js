@@ -85,6 +85,15 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 
+	app.get('/init.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './init.js');
+		res.sendFile(filePath);
+	})
+
+	app.get('/index.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './index.js');
+		res.sendFile(filePath);
+	})
 	app.get('/units.js', (req, res, next) => {
 		var filePath = path.join(__dirname, './units.js');
 		res.sendFile(filePath);

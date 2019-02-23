@@ -201,6 +201,14 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/WALl.png');
 		res.sendFile(filePath);
 	})
+	app.get('/images/Tank.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Tank.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/AmmoredTank.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/AmmoredTank.png');
+		res.sendFile(filePath);
+	})
 
 
 

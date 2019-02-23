@@ -1,3 +1,3 @@
-var test = new classExample("input");
+var test = new unitExample("input");
 
 console.log(funcExample(test.input))

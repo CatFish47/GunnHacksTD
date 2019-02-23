@@ -80,6 +80,13 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 
+	// Images
+
+	app.get('/images/icon.jpg', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/icon.jpg');
+		res.sendFile(filePath);
+	})
+
 	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
 	server.on('listening', () => {
 

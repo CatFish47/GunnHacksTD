@@ -8,6 +8,7 @@ class Tile {
     this.unit = null;
     this.x = x;
     this.y = y;
+    this.enemies = [];
   }
 
   placeWall() {
@@ -25,6 +26,10 @@ class Tile {
 
   unhighlight() {
     this.border.src = "/images/empty.png";
+  }
+
+  addEnemy(enemy) {
+    this.enemies.push(enemy);
   }
 }
 

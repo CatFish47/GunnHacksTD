@@ -33,7 +33,7 @@ document.addEventListener("click", function(e) {
           board.board[row + 1][col].placeWall();
           recalculateRoute();
         } else if (board.board[row + 1][col].wall) {
-          board.board[row + 1][col].placeUnit(eval(storedUnit));
+          board.board[row + 1][col].placeUnit(eval(storedUnit + `${row + 1}, ${col});`));
         }
       }
     }
@@ -44,15 +44,15 @@ document.addEventListener("click", function(e) {
   if (mouseX > 100 && mouseX < 175 && mouseY > 50 && mouseY < 125) {
     storedUnit = "new Wall();";
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 130 && mouseY < 205) {
-    storedUnit = "new Gunner();";
+    storedUnit = "new Gunner(";
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 210 && mouseY < 285) {
-    storedUnit = "new Wizard();";
+    storedUnit = "new Wizard(";
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 290 && mouseY < 365) {
-    storedUnit = "new Freezer();";
+    storedUnit = "new Freezer(";
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 370 && mouseY < 445) {
-    storedUnit = "new RingOfFire();";
+    storedUnit = "new RingOfFire(";
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 450 && mouseY < 525) {
-    storedUnit = "new MoralSupporter();";
+    storedUnit = "new MoralSupporter(";
   } else if (mouseX > boardTopLeft.x && mouseX < boardTopLeft.x + 600 &&
               mouseY > boardTopLeft.y && mouseY < boardTopLeft.y + 600) {
   } else {

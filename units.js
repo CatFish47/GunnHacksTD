@@ -1,5 +1,5 @@
 class Wall {
-  constructor() {
+  constructor(x, y) {
     this.name = "Wall";
     this.image = new Image();
     this.image.src = "images/WALl.png";
@@ -8,16 +8,32 @@ class Wall {
 }
 
 class Unit {
-  constructor() {}
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 
   scanEnemies(range) {
+    var enemies = [];
 
+    for (var i = -range; i <= range; i++) {
+      for (var j = -range; j <= range; j++) {
+        if (this.x + i >= 0 && this.x + i < board.board.length &&
+            this.y + i >= 0 && this.y + i < board.board[0].length) {
+          enemies = enemies.concat(this.checkEnemies(board.board[this.x + i][this.y + j]));
+        }
+      }
+    }
+  }
+
+  checkEnemies(tile) {
+    
   }
 }
 
 class Gunner extends Unit {
-  constructor() {
-    super();
+  constructor(x, y) {
+    super(x, y);
     this.name = "Gunner";
     this.range = 2;
     this.dmg = 2;
@@ -33,10 +49,10 @@ class Gunner extends Unit {
 }
 
 class RingOfFire extends Unit {
-  constructor() {
-    super();
+  constructor(x, y) {
+    super(x, y);
     this.name = "Ring of Fire";
-    this.range = 3;
+    this.range = 1;
     this.dmg = 10;
     this.delay = 1; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
@@ -50,10 +66,10 @@ class RingOfFire extends Unit {
 }
 
 class Freezer extends Unit {
-  constructor() {
-    super();
+  constructor(x, y) {
+    super(x, y);
     this.name = "Freezer";
-    this.range = 2;
+    this.range = 1;
     this.dmg = 0;
     this.delay = 3; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
@@ -65,11 +81,12 @@ class Freezer extends Unit {
 
   }
 }
+
 class MoralSupporter extends Unit {
-  constructor() {
-    super();
+  constructor(x, y) {
+    super(x, y);
     this.name = "Moral Supporter";
-    this.range = 5;
+    this.range = 3;
     this.dmg = 0;
     this.delay = 0; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
@@ -81,16 +98,17 @@ class MoralSupporter extends Unit {
 
   }
 }
+
 class Wizard extends Unit {
-  constructor() {
-    super();
+  constructor(x, y) {
+    super(x, y);
     this.name = "Wizard";
     this.range = 3;
-    this.dmg = 0;
-    this.delay = 0; // Amt of seconds it takes for the unit to attack again
+    this.dmg = 5;
+    this.delay = 4; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
     this.image.src = "/images/Wisard.png";
-    this.cost = 200;
+    this.cost = 300;
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack

@@ -1,8 +1,11 @@
 class Enemy {
-  constructor() {}
+  constructor() {
+    this.x = boardTopLeft.x + 300;
+    this.y = -50;
+  }
 
-  move() {
-    // Move the enemy across the board
+  move(spd) {
+    this.y += spd;
   }
 }
 

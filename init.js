@@ -35,7 +35,9 @@ var mouseY = 0;
 // Game
 var storedUnit = "";
 var wave = 0;
+var enemiesOnField = [];
 var route = [];
+var flyRoute = board.solveMaze();
 var waves = [
   //1
   [new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy(), new SmallEnemy()],

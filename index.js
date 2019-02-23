@@ -170,7 +170,7 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 	app.get('/images/Freeze.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/empty.png');
+		var filePath = path.join(__dirname, './images/Freeze.png');
 		res.sendFile(filePath);
 	})
 	app.get('/images/Gunner.png', (req, res, next) => {

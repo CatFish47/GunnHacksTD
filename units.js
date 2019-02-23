@@ -2,7 +2,7 @@ class Wall {
   constructor() {
     this.name = "Wall";
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "images/WALl.png";
     this.cost = 50;
   }
 
@@ -28,7 +28,7 @@ class Gunner extends Unit {
     this.dmg = 2;
     this.delay = 0.2; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "images/Gunner.png";
     this.cost = 100;
   }
 
@@ -45,7 +45,7 @@ class RingOfFire extends Unit {
     this.dmg = 10;
     this.delay = 1; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "images/FireIn.png";
     this.cost = 290;
   }
 
@@ -62,7 +62,7 @@ class Freezer extends Unit {
     this.dmg = 0;
     this.delay = 3; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "images/Freeze.png";
     this.cost = 300;
   }
 
@@ -78,7 +78,7 @@ class MoralSupporter extends Unit {
     this.dmg = 0;
     this.delay = 0; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "images/SELF.png";
     this.cost = 600;
   }
 
@@ -94,7 +94,7 @@ class Wizard extends Unit {
     this.dmg = 0;
     this.delay = 0; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "/images/Wisard.png";
     this.cost = 200;
   }
 

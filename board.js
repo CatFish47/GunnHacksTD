@@ -12,7 +12,7 @@ class Tile {
 
   placeWall() {
     this.wall = true;
-    this.image.src = "/images/wall.png"; // Change the image of tile to a wall
+    this.tile.src = "/images/WALl.png"; // Change the image of tile to a wall
   }
 
   placeUnit(unit) {
@@ -25,10 +25,6 @@ class Tile {
 
   unhighlight() {
     this.border.src = "/images/empty.png";
-  }
-
-  place(unit) { // Select a tower from the menu, then place the tower
-
   }
 }
 
@@ -115,12 +111,8 @@ class Board {
     var tiles = [];
 
     if (maze[x-1][y-1] == -1) {tiles.push(new Tile(x-1,y-1));}
-    if (maze[x][y-1] == -1) {tiles.push(new Tile(x,y-1));}
-    if (maze[x+1][y-1] == -1) {tiles.push(new Tile(x+1,y-1));}
     if (maze[x+1][y] == -1) {tiles.push(new Tile(x+1,y));}
-    if (maze[x+1][y+1] == -1) {tiles.push(new Tile(x+1,y+1));}
     if (maze[x][y+1] == -1) {tiles.push(new Tile(x,y+1));}
-    if (maze[x-1][y+1] == -1) {tiles.push(new Tile(x-1,y+1));}
     if (maze[x-1][y] == -1) {tiles.push(new Tile(x-1,y));}
 
     return tiles;
@@ -128,12 +120,8 @@ class Board {
 
   checkSurroundingTilesSolve(x, y, counter, maze) {
     if (maze[x][y-1] == counter) {return this.board[x][y-1];}
-    if (maze[x-1][y-1] == counter) {return this.board[x-1][y-1];}
-    if (maze[x+1][y-1] == counter) {return this.board[x+1][y-1];}
     if (maze[x+1][y] == counter) {return this.board[x+1][y];}
-    if (maze[x+1][y+1] == counter) {return this.board[x+1][y+1];}
     if (maze[x][y+1] == counter) {return this.board[x][y+1];}
-    if (maze[x-1][y+1] == counter) {return this.board[x-1][y+1];}
     if (maze[x-1][y] == counter) {return this.board[x-1][y];}
 
     return 0;

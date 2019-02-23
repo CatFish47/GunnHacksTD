@@ -3,10 +3,6 @@ function init() {
 
   recalculateRoute();
 
-  for (var i in route) {
-    route[i].tile.src = "/images/watermelon.png";
-  }
-
   window.requestAnimationFrame(animate);
 }
 

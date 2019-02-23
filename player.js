@@ -1,6 +1,6 @@
 class Player {
-  constructor() {
-    this.money = 200;
-    this.lives = 100;
+  constructor(mon, liv) {
+    this.money = mon;
+    this.lives = liv;
   }
 }

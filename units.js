@@ -19,7 +19,7 @@ class Gunner extends Unit {
   constructor() {
     super();
     this.name = "Gunner";
-    this.range = 4;
+    this.range = 2;
     this.dmg = 2;
     this.delay = 0.2; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
@@ -85,7 +85,7 @@ class Wizard extends Unit {
   constructor() {
     super();
     this.name = "Wizard";
-    this.range = 5;
+    this.range = 3;
     this.dmg = 0;
     this.delay = 0; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();

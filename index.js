@@ -40,6 +40,16 @@ function startServer() {
 		res.send('OK');
 	})
 
+	app.get('/board.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './board.js');
+		res.sendFile(filePath);
+	})
+
+	app.get('/eventListeners.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './eventListeners.js');
+		res.sendFile(filePath);
+	})
+
 	app.get('/testClass.js', (req, res, next) => {
 		var filePath = path.join(__dirname, './testClass.js');
 		res.sendFile(filePath);
@@ -71,41 +81,42 @@ function startServer() {
 	})
 
 	app.get('/enemies.js', (req, res, next) => {
-		var filePath = path.join(__dirname, './game.js');
+		var filePath = path.join(__dirname, './enemies.js');
 		res.sendFile(filePath);
 	})
 
 	app.get('/units.js', (req, res, next) => {
-		var filePath = path.join(__dirname, './game.js');
+		var filePath = path.join(__dirname, './units.js');
 		res.sendFile(filePath);
 	})
 
 	// Images
 
-	app.get('/images/icon.jpg', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/icon.jpg');
-		res.sendFile(filePath);
-	})
-
 	app.get('/images/background.png', (req, res, next) => {
 		var filePath = path.join(__dirname, './images/background.png');
 		res.sendFile(filePath);
 	})
-
-	app.get('/images/mediumMan.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/mediumMan.png');
+	app.get('/images/Grid.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Grid.png');
 		res.sendFile(filePath);
 	})
-
-	app.get('/images/smallMan.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/smallMan.png');
+	app.get('/images/icon.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/icon.png');
 		res.sendFile(filePath);
 	})
-
+	app.get('/images/MediumMan.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/MediumMan.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/SmallMan.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/SmallMan.png');
+		res.sendFile(filePath);
+	})
 	app.get('/images/watermelon.png', (req, res, next) => {
 		var filePath = path.join(__dirname, './images/watermelon.png');
 		res.sendFile(filePath);
 	})
+
 
 	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
 	server.on('listening', () => {

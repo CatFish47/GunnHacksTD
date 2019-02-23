@@ -130,7 +130,7 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 	app.get('/images/Rifle.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/SmallMan.png');
+		var filePath = path.join(__dirname, './images/Rifle.png');
 		res.sendFile(filePath);
 	})
 	app.get('/images/RifleShooting.png', (req, res, next) => {
@@ -157,6 +157,43 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/empty.png');
 		res.sendFile(filePath);
 	})
+	app.get('/images/box.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/box.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/FireIn.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/FireIn.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/FireOut.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/FireOut.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/Freeze.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/empty.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/Gunner.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Gunner.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/empty.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/empty.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/GunnerShooting.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/GunnerShooting.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/Litning.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Litning.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/Wisard.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Wisard.png');
+		res.sendFile(filePath);
+	})
+
 
 
 	/* Defines what function to all when the server recieves any request from http://localhost:8080 */

@@ -44,7 +44,7 @@ class Board {
     }
 
     this.entrance = new Tile(Math.floor(x/2), 0);
-    this.exit = new Tile(Math.ceil(x/2), y - 1);
+    this.exit = new Tile(Math.floor(x/2), y - 1);
 
     this.image = new Image();
     this.image.src = "/images/gridBorder.png";
@@ -74,47 +74,39 @@ class Board {
     maze[this.entrance.x][this.entrance.y] = 0;
     maze[this.exit.x][this.exit.y] = -1;
 
-    // while (true) {
-    //   var stuff = 0;
-    //
-    //   for (var row = 1; row < maze.length - 1; row++) {
-    //     for (var col = 1; col < maze[row].length - 1; col++) {
-    //       if (maze[row][col] == counter) {
-    //         var tiles = checkSurroundingTiles(row, col, counter, maze);
-    //
-    //         for (i in tiles) {
-    //           maze[tiles[i].x][tiles[i].y] = counter + 1;
-    //         }
-    //
-    //         stuff++;
-    //       }
-    //     }
-    //   }
-    //
-    //   if (stuff > 0) {
-    //     break;
-    //   } else {
-    //     counter++;
-    //   }
-    // }
-    //
+    while (counter < 225) {
+      for (var row = 0; row < maze.length; row++) {
+        for (var col = 0; col < maze[row].length; col++) {
+          if (maze[row][col] == counter) {
+            var tiles = this.checkSurroundingTilesSetup(row, col, counter, maze);
+
+            for (var i in tiles) {
+              maze[tiles[i].x][tiles[i].y] = counter + 1;
+            }
+          }
+        }
+      }
+
+      counter++;
+    }
+
     // // Start from the end to the
     var route = [];
-    // var counter = maze[this.exit.x][this.exit.y];
-    //
-    // route.push(this.board[this.exit.x][this.exit.y]);
-    //
-    // while (true) {
-    //   var x = route[route.length - 1].x;
-    //   var y = route[route.length - 1].y;
-    //
-    //   counter--;
-    //   route.push(checkSurroundingTilesSolve(x, y, counter, maze));
-    //
-    //   if (counter <= 0) {
-    //     break;
-    //   }
-    // }
+    var counter = maze[this.exit.x][this.exit.y];
+
+    route.push(this.board[this.exit.x][this.exit.y]);
+
+    while (true) {
+      var x = route[route.length - 1].x;
+      var y = route[route.length - 1].y;
+
+      counter--;
+      route.push(this.checkSurroundingTilesSolve(x, y, counter, maze));
+
+      if (counter <= 0) {
+        break;
+      }
+    }
 
     return route.reverse();
   }

@@ -1,9 +1,10 @@
 function init() {
   drawGrid();
 
-  //recalculateRoute();
+  recalculateRoute();
+
   for (var i in route) {
-    route[i].tile.src = "/images/grid.png";
+    route[i].tile.src = "/images/watermelon.png";
   }
 
   window.requestAnimationFrame(animate);
@@ -23,10 +24,40 @@ function drawGrid() {
   drawTiles();
 }
 
+function drawMenu() {
+  var bg = new Image();
+  bg.src = "/images/box.png";
+
+  context.drawImage(bg, 100, 50, 75, 75); // Wall
+  var wall = new Wall();
+  context.drawImage(wall.image, 100, 50, 75, 75);
+
+  context.drawImage(bg, 100, 130, 75, 75); // Gunner
+  var gunner = new Gunner();
+  context.drawImage(gunner.image, 100, 130, 75, 75);
+
+  context.drawImage(bg, 100, 210, 75, 75); // Wizard
+  var wizard = new Wizard();
+  context.drawImage(wizard.image, 100, 210, 75, 75);
+
+  context.drawImage(bg, 100, 290, 75, 75); // Freezer
+  var freezer = new Freezer();
+  context.drawImage(freezer.image, 100, 290, 75, 75);
+
+  context.drawImage(bg, 100, 370, 75, 75); // Ring of Fire
+  var fire = new RingOfFire();
+  context.drawImage(fire.image, 100, 370, 75, 75);
+
+  context.drawImage(bg, 100, 450, 75, 75); // Moral Supporter
+  var moral = new MoralSupporter();
+  context.drawImage(moral.image, 100, 450, 75, 75);
+}
+
 function draw() {
   context.clearRect(0, 0, $canvas.width, $canvas.height);
 
   drawGrid();
+  drawMenu();
 
   return 0;
 }

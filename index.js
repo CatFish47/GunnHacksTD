@@ -145,8 +145,8 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/watermelon.png');
 		res.sendFile(filePath);
 	})
-	app.get('/images/wall.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/wall.png');
+	app.get('/images/box.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/box.png');
 		res.sendFile(filePath);
 	})
 	app.get('/images/tileBorder.png', (req, res, next) => {

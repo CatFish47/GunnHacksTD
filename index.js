@@ -197,6 +197,10 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/SELF.png');
 		res.sendFile(filePath);
 	})
+	app.get('/images/WALl.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/WALl.png');
+		res.sendFile(filePath);
+	})
 
 
 

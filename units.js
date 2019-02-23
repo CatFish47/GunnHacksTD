@@ -9,6 +9,10 @@ class Wall {
 
 class Unit {
   constructor() {}
+
+  scanEnemies(range) {
+
+  }
 }
 
 class Gunner extends Unit {

@@ -23,18 +23,103 @@ class Board {
       }
     }
 
-    this.entrance = {
-      x: Math.ceil(x/2),
-      y: 0
-    }
-
-    this.exit = {
-      x: Math.ceil(x/2),
-      y: y - 1
-    }
+    this.entrance = new Tile(Math.ceil(x/2), 0);
+    this.exit = new Tile(Math.ceil(x/2), y - 1);
   }
 
   solveMaze() {
+    var counter = 0;
+    var maze = [];
 
+    for (var row = 0; row < x; row++) {
+      for (var col = 0; col < y; col++) {
+        maze[row][col] = null;
+      }
+    }
+
+    for (var row = 1; row < maze.length- 1; row++) {
+      for (var col = 1; col < maze[row].length - 1; col++) {
+        if (!this.board[row][col].wall) {
+          maze[row][col] = -1;
+        } else {
+          maze[row][col] = null;
+        }
+      }
+    } // Setup the board so the crap is all ready
+
+    maze[this.entrance.x][this.entrance.y] = 0;
+    maze[this.exit.x][this.exit.y] = -1;
+
+    while (true) {
+      var stuff = 0;
+
+      for (var row = 1; row < maze.length - 1; row++) {
+        for (var col = 1; col < maze[row].length - 1; col++) {
+          if (maze[row][col] == counter) {
+            var tiles = checkSurroundingTiles(row, col, counter, maze);
+
+            for (i in tiles) {
+              maze[tiles[i].x][tiles[i].y] = counter + 1;
+            }
+
+            stuff++;
+          }
+        }
+      }
+
+      if (stuff > 0) {
+        break;
+      } else {
+        counter++;
+      }
+    }
+
+    // Start from the end to the
+    var route = [];
+    var counter = maze[this.exit.x][this.exit.y];
+
+    route.push(this.board[this.exit.x][this.exit.y]);
+
+    while (true) {
+      var x = route[route.length - 1].x;
+      var y = route[route.length - 1].y;
+
+      counter--;
+      route.push(checkSurroundingTilesSolve(x, y, counter, maze));
+
+      if (counter <= 0) {
+        break;
+      }
+    }
+
+    return route.reverse();
+  }
+
+  checkSurroundingTilesSetup(x, y, counter, maze) { // Helps the solveMaze() function
+    var tiles = [];
+
+    if (maze[x-1][y-1] == -1) {tiles.push(new Tile(x-1,y-1));}
+    if (maze[x][y-1] == -1) {tiles.push(new Tile(x,y-1));}
+    if (maze[x+1][y-1] == -1) {tiles.push(new Tile(x+1,y-1));}
+    if (maze[x+1][y] == -1) {tiles.push(new Tile(x+1,y));}
+    if (maze[x+1][y+1] == -1) {tiles.push(new Tile(x+1,y+1));}
+    if (maze[x][y+1] == -1) {tiles.push(new Tile(x,y+1));}
+    if (maze[x-1][y+1] == -1) {tiles.push(new Tile(x-1,y+1));}
+    if (maze[x-1][y] == -1) {tiles.push(new Tile(x-1,y));}
+
+    return tiles;
+  }
+
+  checkSurroundingTilesSolve(x, y, counter, maze) {
+    if (maze[x][y-1] == counter) {return this.board[x][y-1];}
+    if (maze[x-1][y-1] == counter) {return this.board[x-1][y-1];}
+    if (maze[x+1][y-1] == counter) {return this.board[x+1][y-1];}
+    if (maze[x+1][y] == counter) {return this.board[x+1][y];}
+    if (maze[x+1][y+1] == counter) {return this.board[x+1][y+1];}
+    if (maze[x][y+1] == counter) {return this.board[x][y+1];}
+    if (maze[x-1][y+1] == counter) {return this.board[x-1][y+1];}
+    if (maze[x-1][y] == counter) {return this.board[x-1][y];}
+
+    return 0;
   }
 }

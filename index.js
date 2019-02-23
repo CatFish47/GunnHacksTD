@@ -55,6 +55,31 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 
+	app.get('/game', (req, res, next) => {
+		var filePath = path.join(__dirname, './game.html');
+		res.sendFile(filePath);
+	})
+
+	app.get('/game.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './game.js');
+		res.sendFile(filePath);
+	})
+
+	app.get('/board.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './board.js');
+		res.sendFile(filePath);
+	})
+
+	app.get('/enemies.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './game.js');
+		res.sendFile(filePath);
+	})
+
+	app.get('/units.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './game.js');
+		res.sendFile(filePath);
+	})
+
 	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
 	server.on('listening', () => {
 

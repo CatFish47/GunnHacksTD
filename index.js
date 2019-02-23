@@ -108,6 +108,14 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/MediumMan.png');
 		res.sendFile(filePath);
 	})
+	app.get('/images/Rifle.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/SmallMan.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/RifleShooting.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/watermelon.png');
+		res.sendFile(filePath);
+	})
 	app.get('/images/SmallMan.png', (req, res, next) => {
 		var filePath = path.join(__dirname, './images/SmallMan.png');
 		res.sendFile(filePath);

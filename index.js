@@ -87,6 +87,26 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 
+	app.get('/images/background.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/background.png');
+		res.sendFile(filePath);
+	})
+
+	app.get('/images/mediumMan.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/mediumMan.png');
+		res.sendFile(filePath);
+	})
+
+	app.get('/images/smallMan.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/smallMan.png');
+		res.sendFile(filePath);
+	})
+
+	app.get('/images/watermelon.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/watermelon.png');
+		res.sendFile(filePath);
+	})
+
 	/* Defines what function to all when the server recieves any request from http://localhost:8080 */
 	server.on('listening', () => {
 

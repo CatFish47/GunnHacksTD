@@ -1,3 +1,11 @@
+class Unit {
+  constructor() {}
+
+  someBasicFunctionAllUnitsDo() {
+
+  }
+}
+
 class Rifle extends Unit {
   constructor() {
     this.name = "Rifle";

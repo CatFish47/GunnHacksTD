@@ -98,6 +98,14 @@ function startServer() {
 		var filePath = path.join(__dirname, './units.js');
 		res.sendFile(filePath);
 	})
+	app.get('/player.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './player.js');
+		res.sendFile(filePath);
+	})
+	app.get('/funcs.js', (req, res, next) => {
+		var filePath = path.join(__dirname, './funcs.js');
+		res.sendFile(filePath);
+	})
 
 	// Images
 
@@ -105,8 +113,12 @@ function startServer() {
 		var filePath = path.join(__dirname, './images/background.png');
 		res.sendFile(filePath);
 	})
-	app.get('/images/Grid.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/Grid.png');
+	app.get('/images/grid.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/grid.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/gridBorder.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/gridBorder.png');
 		res.sendFile(filePath);
 	})
 	app.get('/images/icon.png', (req, res, next) => {
@@ -131,6 +143,18 @@ function startServer() {
 	})
 	app.get('/images/watermelon.png', (req, res, next) => {
 		var filePath = path.join(__dirname, './images/watermelon.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/wall.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/wall.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/tileBorder.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/tileBorder.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/empty.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/empty.png');
 		res.sendFile(filePath);
 	})
 

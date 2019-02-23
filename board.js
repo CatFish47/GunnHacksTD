@@ -1,8 +1,10 @@
 class Tile {
   constructor(x, y) {
     this.wall = false;
-    this.image = new Image();
-    this.image.src = "";
+    this.tile = new Image();
+    this.tile.src = "/images/empty.png";
+    this.border = new Image();
+    this.border.src = "/images/empty.png";
     this.unit = null;
     this.x = x;
     this.y = y;
@@ -10,7 +12,23 @@ class Tile {
 
   placeWall() {
     this.wall = true;
-    this.image.src = ""; // Change the image of tile to a wall
+    this.image.src = "/images/wall.png"; // Change the image of tile to a wall
+  }
+
+  placeUnit(unit) {
+    this.unit = unit;
+  }
+
+  highlight() {
+    this.border.src = "/images/tileBorder.png"
+  }
+
+  unhighlight() {
+    this.border.src = "/images/empty.png";
+  }
+
+  place(unit) { // Select a tower from the menu, then place the tower
+
   }
 }
 
@@ -18,22 +36,28 @@ class Board {
   constructor(x, y) {
     this.board = [];
     for (var row = 0; row < x; row++) {
+      this.board.push([]);
+
       for (var col = 0; col < y; col++) {
-        this.board[row][col] = new Tile(row, col);
+        this.board[row].push(new Tile(row, col));
       }
     }
 
-    this.entrance = new Tile(Math.ceil(x/2), 0);
+    this.entrance = new Tile(Math.floor(x/2), 0);
     this.exit = new Tile(Math.ceil(x/2), y - 1);
+
+    this.image = new Image();
+    this.image.src = "/images/gridBorder.png";
   }
 
   solveMaze() {
     var counter = 0;
     var maze = [];
 
-    for (var row = 0; row < x; row++) {
-      for (var col = 0; col < y; col++) {
-        maze[row][col] = null;
+    for (var row = 0; row < this.board.length; row++) {
+      maze.push([]);
+      for (var col = 0; col < this.board[row].length; col++) {
+        maze[row].push(-100);
       }
     }
 
@@ -42,7 +66,7 @@ class Board {
         if (!this.board[row][col].wall) {
           maze[row][col] = -1;
         } else {
-          maze[row][col] = null;
+          maze[row][col] = -100;
         }
       }
     } // Setup the board so the crap is all ready
@@ -50,47 +74,47 @@ class Board {
     maze[this.entrance.x][this.entrance.y] = 0;
     maze[this.exit.x][this.exit.y] = -1;
 
-    while (true) {
-      var stuff = 0;
-
-      for (var row = 1; row < maze.length - 1; row++) {
-        for (var col = 1; col < maze[row].length - 1; col++) {
-          if (maze[row][col] == counter) {
-            var tiles = checkSurroundingTiles(row, col, counter, maze);
-
-            for (i in tiles) {
-              maze[tiles[i].x][tiles[i].y] = counter + 1;
-            }
-
-            stuff++;
-          }
-        }
-      }
-
-      if (stuff > 0) {
-        break;
-      } else {
-        counter++;
-      }
-    }
-
-    // Start from the end to the
+    // while (true) {
+    //   var stuff = 0;
+    //
+    //   for (var row = 1; row < maze.length - 1; row++) {
+    //     for (var col = 1; col < maze[row].length - 1; col++) {
+    //       if (maze[row][col] == counter) {
+    //         var tiles = checkSurroundingTiles(row, col, counter, maze);
+    //
+    //         for (i in tiles) {
+    //           maze[tiles[i].x][tiles[i].y] = counter + 1;
+    //         }
+    //
+    //         stuff++;
+    //       }
+    //     }
+    //   }
+    //
+    //   if (stuff > 0) {
+    //     break;
+    //   } else {
+    //     counter++;
+    //   }
+    // }
+    //
+    // // Start from the end to the
     var route = [];
-    var counter = maze[this.exit.x][this.exit.y];
-
-    route.push(this.board[this.exit.x][this.exit.y]);
-
-    while (true) {
-      var x = route[route.length - 1].x;
-      var y = route[route.length - 1].y;
-
-      counter--;
-      route.push(checkSurroundingTilesSolve(x, y, counter, maze));
-
-      if (counter <= 0) {
-        break;
-      }
-    }
+    // var counter = maze[this.exit.x][this.exit.y];
+    //
+    // route.push(this.board[this.exit.x][this.exit.y]);
+    //
+    // while (true) {
+    //   var x = route[route.length - 1].x;
+    //   var y = route[route.length - 1].y;
+    //
+    //   counter--;
+    //   route.push(checkSurroundingTilesSolve(x, y, counter, maze));
+    //
+    //   if (counter <= 0) {
+    //     break;
+    //   }
+    // }
 
     return route.reverse();
   }

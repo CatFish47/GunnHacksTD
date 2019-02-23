@@ -5,7 +5,7 @@ $canvas.width = 1200;
 $canvas.height = 700;
 
 // Init Variables
-var board = new Board(21, 21); // a 19x19 grid
+var board = new Board(17, 17); // a 15x15 grid
 var startButtonTopLeft = {
   x: 990,
   y: 617
@@ -22,7 +22,16 @@ var speedUpBottomRight = {
   x: 976,
   y: 676
 };
+var boardTopLeft = {
+  x: 285,
+  y: 20
+}
 
 // Mouse Variables
 var mouseX = 0;
 var mouseY = 0;
+
+// Game
+var storedUnit;
+var wave = 0;
+var route = [];

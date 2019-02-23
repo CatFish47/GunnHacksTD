@@ -1,3 +1,11 @@
+class Enemy {
+  constructor() {}
+
+  move() {
+    // Move the enemy across the board
+  }
+}
+
 class SmallEnemy extends Enemy {
   constructor() {
     this.name = "SmallEnemy";

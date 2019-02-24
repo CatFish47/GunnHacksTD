@@ -78,7 +78,7 @@ class Sprinter extends Enemy {
     this.lives = 1; // How many lives die if the enemy gets past
     this.hp = 100;
     this.image = new Image();
-    this.image.src = "/images/Rabbir.png";
+    this.image.src = "/images/Rabblir.png";
     this.spd = 20; // How fast the unit moves per tick
     this.moneyGained = 20;
   }

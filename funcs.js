@@ -1,4 +1,5 @@
 var c = 0;
+var startWaves;
 
 function recalculateRoute() {
   route = board.solveMaze();
@@ -7,16 +8,16 @@ function recalculateRoute() {
 function spawnEnemy() {
   if (c < waves[wave].length) {
     enemiesOnField.push(waves[wave][c]);
+  } else {
+    clearInterval(startWaves);
   }
 
   c++;
-
-  console.log(enemiesOnField)
 }
 
 function startNextWave() {
   c = 0;
   wave++;
 
-  setInterval(spawnEnemy, 500);
+  startWaves = setInterval(spawnEnemy, 1000);
 }

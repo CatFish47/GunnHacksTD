@@ -61,12 +61,19 @@ function drawEnemies() {
   }
 }
 
+function drawScoreboard() {
+  context.fillText(`$${player.money}`, 1000, 100)
+  context.fillText(`Lives: ${player.money}`, 1000, 200)
+  context.fillText(`Wave: ${wave}`, 1000, 300)
+}
+
 function draw() {
   context.clearRect(0, 0, $canvas.width, $canvas.height);
 
   drawGrid();
   drawMenu();
   drawEnemies();
+  drawScoreboard();
 
   return 0;
 }
@@ -81,7 +88,18 @@ function unitsAttack() {
   }
 }
 
+function checkDead() {
+  for (var i in enemiesOnField) {
+    player.money += enemiesOnField[i].moneyGained;
+
+    if (enemiesOnField[i].hp <= 0) {
+      enemiesOnField.remove(enemiesOnField[i]);
+    }
+  }
+}
+
 function updateEnemies() {
+  checkDead();
   updateEnemyTiles();
   moveEnemies();
 }

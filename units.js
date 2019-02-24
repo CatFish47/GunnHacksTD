@@ -19,15 +19,25 @@ class Unit {
     for (var i = -range; i <= range; i++) {
       for (var j = -range; j <= range; j++) {
         if (this.x + i >= 0 && this.x + i < board.board.length &&
-            this.y + i >= 0 && this.y + i < board.board[0].length) {
+            this.y + j >= 0 && this.y + j < board.board[0].length) {
           enemies = enemies.concat(this.checkEnemies(board.board[this.x + i][this.y + j]));
         }
       }
     }
+
+    return enemies.reverse();
   }
 
   checkEnemies(tile) {
+    var targets = [];
 
+    for (var i in enemiesOnField) {
+      if (enemiesOnField[i].tileX == tile.x && enemiesOnField[i].tileY == tile.y) {
+        targets.push(enemiesOnField[i]);
+      }
+    }
+
+    return targets;
   }
 }
 
@@ -41,10 +51,17 @@ class Gunner extends Unit {
     this.image = new Image();
     this.image.src = "images/Gunner.png";
     this.cost = 100;
+
+    this.interval = setInterval(function() {}, this.delay * 1000);
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
     var inRange = this.scanEnemies(this.range);
+
+    if (inRange.length > 0) {
+      inRange[0].hp -= this.dmg;
+      this.image.src = "images/GunnerShooting.png";
+    }
   }
 }
 

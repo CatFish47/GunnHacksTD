@@ -100,7 +100,7 @@ class TheUltimateBoss extends Enemy {
     this.lives = 20; // How many lives die if the enemy gets past
     this.hp = 1600;
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "/images/RatKing.png";
     this.spd = 10; // How fast the unit moves per tick
     this.moneyGained = 200;
   }

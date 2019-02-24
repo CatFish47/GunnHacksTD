@@ -148,11 +148,11 @@ class TheUltimateBoss extends Enemy {
   constructor() {
     super();
     this.name = "TheUltimateBoss";
-    this.lives = 20; // How many lives die if the enemy gets past
-    this.hp = 1600;
+    this.lives = 100; // How many lives die if the enemy gets past
+    this.hp = 2500;
     this.image = new Image();
     this.image.src = "/images/RatKing.png";
-    this.spd = 10; // How fast the unit moves per tick
+    this.spd = 2.5; // How fast the unit moves per tick
     this.moneyGained = 600;
   }
 }

@@ -116,7 +116,7 @@ class Freezer extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
-
+    var inRange = this.scanEnemies(this.range);
   }
 }
 

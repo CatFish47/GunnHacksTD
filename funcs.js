@@ -12,6 +12,7 @@ function spawnEnemy() {
   } else {
     clearInterval(startWaves);
     startWaves = 0;
+    player.money += (wave + 1) * (wave + 1) + 100; // Change with nico's equation
   }
 
   c++;
@@ -38,4 +39,16 @@ function isValid(tile) {
   } else {
     return true;
   }
+}
+
+function addMoney(n) {
+  player.money += n;
+}
+
+function setWave(n) {
+  wave = n;
+}
+
+function addLives(n) {
+  player.lives += n;
 }

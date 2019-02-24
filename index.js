@@ -134,7 +134,7 @@ function startServer() {
 		res.sendFile(filePath);
 	})
 	app.get('/images/RifleShooting.png', (req, res, next) => {
-		var filePath = path.join(__dirname, './images/watermelon.png');
+		var filePath = path.join(__dirname, './images/RifleShooting.png');
 		res.sendFile(filePath);
 	})
 	app.get('/images/SmallMan.png', (req, res, next) => {
@@ -207,6 +207,14 @@ function startServer() {
 	})
 	app.get('/images/AmmoredTank.png', (req, res, next) => {
 		var filePath = path.join(__dirname, './images/AmmoredTank.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/rabblir.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/rabblir.png');
+		res.sendFile(filePath);
+	})
+	app.get('/images/Spin.png', (req, res, next) => {
+		var filePath = path.join(__dirname, './images/Spin.png');
 		res.sendFile(filePath);
 	})
 

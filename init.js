@@ -17,7 +17,8 @@ $canvas.height = 700;
 
 // Init Variables
 var board = new Board(17, 17); // a 15x15 grid
-var player = new Player(100, 100); // $, <3
+var player = new Player(500, 100); // $, <3
+
 var startButtonTopLeft = {
   x: 990,
   y: 617

@@ -27,7 +27,7 @@ class Unit {
   }
 
   checkEnemies(tile) {
-    
+
   }
 }
 

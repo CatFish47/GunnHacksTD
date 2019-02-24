@@ -3,6 +3,8 @@ function init() {
 
   recalculateRoute();
 
+  route = board.solveMaze();
+
   window.requestAnimationFrame(animate);
 }
 
@@ -53,11 +55,18 @@ function drawMenu() {
   context.drawImage(moral.image, 100, 450, 75, 75);
 }
 
+function drawEnemies() {
+  for (var i in enemiesOnField) {
+    context.drawImage(enemiesOnField[i].image, enemiesOnField[i].x - 20, enemiesOnField[i].y - 20, 40, 40);
+  }
+}
+
 function draw() {
   context.clearRect(0, 0, $canvas.width, $canvas.height);
 
   drawGrid();
   drawMenu();
+  drawEnemies();
 
   return 0;
 }
@@ -72,15 +81,36 @@ function unitsAttack() {
   }
 }
 
-function enemyInTiles() {
+function updateEnemies() {
+  updateEnemyTiles();
+  moveEnemies();
+}
+
+function updateEnemyTiles() {
+  var boxSize = 15;
   for (var i in enemiesOnField) {
-    
+    for (var row = 0; row < board.board.length - 1; row++) {
+      for (var col = 0; col < board.board[row].length - 1; col++) {
+        if (enemiesOnField[i].x > boardTopLeft.x + boxSize + (1 + 40 * (row)) &&
+            enemiesOnField[i].x < boardTopLeft.x - boxSize + (1 + 40 * (row + 1)) &&
+            enemiesOnField[i].y > boardTopLeft.y + boxSize + (1 + 40 * (col - 1)) &&
+            enemiesOnField[i].y < boardTopLeft.y - boxSize + (1 + 40 * (col))) {
+          enemiesOnField[i].changeTiles(board.board[row + 1][col]);
+        }
+      }
+    }
+  }
+}
+
+function moveEnemies() {
+  for (var i in enemiesOnField) {
+    enemiesOnField[i].move(enemiesOnField[i].spd);
   }
 }
 
 function update() {
   unitsAttack();
-  enemyInTiles();
+  updateEnemies();
 }
 
 function animate() {

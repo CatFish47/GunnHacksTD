@@ -2,10 +2,36 @@ class Enemy {
   constructor() {
     this.x = boardTopLeft.x + 300;
     this.y = -50;
+    this.tileX = 8;
+    this.tileY = 0;
   }
 
   move(spd) {
-    this.y += spd;
+    var d = 8;
+
+    console.log(route);
+
+    for (var i = 0; i < route.length; i++) {
+
+      if (this.tileX == route[i].x && this.tileY == route[i].y) {
+        if (route[i + 1].x > this.tileX) {
+          this.x += spd/d;
+        } else if (route[i + 1].x < this.tileX) {
+          this.x -= spd/d;
+        } else if (route[i + 1].y > this.tileY) {
+          this.y += spd/d;
+        } else if (route[i + 1].y < this.tileY) {
+          this.y -= spd/d;
+        }
+      }
+
+
+    }
+  }
+
+  changeTiles(tile) {
+    this.tileX = tile.x;
+    this.tileY = tile.y;
   }
 }
 
@@ -64,7 +90,7 @@ class Tank extends Enemy {
     this.lives = 4; // How many lives die if the enemy gets past
     this.hp = 500;
     this.image = new Image();
-    this.image.src = "http://gunnhacks.com/img/logo.png";
+    this.image.src = "/images/Tank.png";
     this.spd = 5; // How fast the unit moves per tick
     this.moneyGained = 40;
   }

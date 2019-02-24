@@ -60,3 +60,10 @@ document.addEventListener("click", function(e) {
   }
 })
 // TODO: Add border around menu to indicate selection
+
+document.addEventListener("click", function(e) {
+  if (mouseX > startButtonTopLeft.x && mouseX < startButtonBottomRight.x &&
+      mouseY > startButtonTopLeft.y && mouseY < startButtonBottomRight.y) {
+        startNextWave();
+      }
+})

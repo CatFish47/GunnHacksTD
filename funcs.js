@@ -1,15 +1,22 @@
+var c = 0;
+
 function recalculateRoute() {
   route = board.solveMaze();
+}
 
-  for (var row in board.board) {
-    for (var col in board.board[row]) {
-      if (board.board[row][col].tile.src == "http://gunnhacks.com/img/logo.png") {
-        board.board[row][col].tile.src = "";
-      }
-    }
+function spawnEnemy() {
+  if (c < waves[wave].length) {
+    enemiesOnField.push(waves[wave][c]);
   }
 
-  for (var i in route) {
-    route[i].tile.src = "http://gunnhacks.com/img/logo.png";
-  }
+  c++;
+
+  console.log(enemiesOnField)
+}
+
+function startNextWave() {
+  c = 0;
+  wave++;
+
+  setInterval(spawnEnemy, 500);
 }

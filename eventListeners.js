@@ -28,11 +28,13 @@ document.addEventListener("click", function(e) {
           mouseY < boardTopLeft.y + (1 + 40 * (col)))
       {
         if (storedUnit == "") {
-          console.log(row, col)
         } else if (storedUnit == "new Wall(") {
-          player.money -= 50;
-          board.board[row + 1][col].placeWall();
-          recalculateRoute();
+
+          if (isValid(board.board[row+1][col])) {
+            player.money -= 50;
+            recalculateRoute();
+          }
+
         } else if (board.board[row + 1][col].wall) {
 
           board.board[row + 1][col].placeUnit(eval(storedUnit + `${row + 1}, ${col});`));
@@ -54,7 +56,6 @@ document.addEventListener("click", function(e) {
           }
 
           storedUnit = "";
-          console.log(storedUnit);
         }
       }
     }
@@ -62,26 +63,25 @@ document.addEventListener("click", function(e) {
 })
 
 document.addEventListener("click", function(e) {
-  console.log(storedUnit)
 
   if (mouseX > 100 && mouseX < 175 && mouseY > 50 && mouseY < 125) {
-    if (player.money>50){
+    if (player.money>=50){
           storedUnit = "new Wall(";
     }
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 130 && mouseY < 205) {
-    if (player.money>100){
+    if (player.money>=100){
           storedUnit = "new Gunner(";
     }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 210 && mouseY < 285) {
-      if (player.money>200){
+      if (player.money>=200){
             storedUnit = "new Wizard(";
       }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 290 && mouseY < 365) {
-        if (player.money>300){
+        if (player.money>=300){
               storedUnit = "new Freezer(";
         }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 370 && mouseY < 445) {
-          if (player.money>290){
+          if (player.money>=290){
                 storedUnit = "new RingOfFire(";
           }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 450 && mouseY < 525) {
-            if (player.money>600){
+            if (player.money>=600){
                   storedUnit = "new MoralSupporter(";
             }  } else if (mouseX > boardTopLeft.x && mouseX < boardTopLeft.x + 600 &&
               mouseY > boardTopLeft.y && mouseY < boardTopLeft.y + 600) {

@@ -9,6 +9,10 @@ class Enemy {
   move(spd) {
     var d = 8;
 
+    if (speed) {
+      d = d / 2;
+    }
+
     for (var i = 0; i < route.length; i++) {
 
       if (this.tileX == route[i].x && this.tileY == route[i].y) {
@@ -42,7 +46,7 @@ class SmallEnemy extends Enemy {
     this.image = new Image();
     this.image.src = "/images/SmallMan.png";
     this.spd = 5; // How fast the unit moves per tick
-    this.moneyGained = 2;
+    this.moneyGained = 6;
   }
 }
 class MediumEnemy extends Enemy {
@@ -50,11 +54,11 @@ class MediumEnemy extends Enemy {
     super();
     this.name = "MediumEnemy";
     this.lives = 2; // How many lives die if the enemy gets past
-    this.hp = 160;
+    this.hp = 140;
     this.image = new Image();
     this.image.src = "/images/MediumMan.png";
     this.spd = 10; // How fast the unit moves per tick
-    this.moneyGained = 4;
+    this.moneyGained = 12;
   }
 }
 class LargeEnemy extends Enemy {
@@ -62,11 +66,11 @@ class LargeEnemy extends Enemy {
     super();
     this.name = "LargeEnemy";
     this.lives = 4; // How many lives die if the enemy gets past
-    this.hp = 270;
+    this.hp = 250;
     this.image = new Image();
     this.image.src = "/images/watermelon.png";
     this.spd = 15; // How fast the unit moves per tick
-    this.moneyGained = 8;
+    this.moneyGained = 24;
   }
 }
 class Sprinter extends Enemy {
@@ -74,11 +78,11 @@ class Sprinter extends Enemy {
     super();
     this.name = "Sprinter";
     this.lives = 1; // How many lives die if the enemy gets past
-    this.hp = 100;
+    this.hp = 90;
     this.image = new Image();
     this.image.src = "/images/Rabblir.png";
     this.spd = 20; // How fast the unit moves per tick
-    this.moneyGained = 20;
+    this.moneyGained = 60;
   }
 }
 class Tank extends Enemy {
@@ -86,11 +90,11 @@ class Tank extends Enemy {
     super();
     this.name = "Tank";
     this.lives = 4; // How many lives die if the enemy gets past
-    this.hp = 500;
+    this.hp = 350;
     this.image = new Image();
     this.image.src = "/images/Tank.png";
     this.spd = 5; // How fast the unit moves per tick
-    this.moneyGained = 40;
+    this.moneyGained = 120;
   }
 }
 class AmmoredTank extends Enemy {
@@ -98,11 +102,11 @@ class AmmoredTank extends Enemy {
     super();
     this.name = "AmmoredTank";
     this.lives = 4; // How many lives die if the enemy gets past
-    this.hp = 800;
+    this.hp = 500;
     this.image = new Image();
     this.image.src = "/images/AmmoredTank.png";
     this.spd = 3; // How fast the unit moves per tick
-    this.moneyGained = 50;
+    this.moneyGained = 150;
   }
 }
 class Flyer extends Enemy {
@@ -114,11 +118,15 @@ class Flyer extends Enemy {
     this.image = new Image();
     this.image.src = "/images/Spin.png";
     this.spd = 10; // How fast the unit moves per tick
-    this.moneyGained = 50;
+    this.moneyGained = 150;
   }
 
   move(spd) {
     var d = 8;
+
+    if (speed) {
+      d = d / 2;
+    }
 
     for (var i = 0; i < flyRoute.length; i++) {
 
@@ -145,6 +153,6 @@ class TheUltimateBoss extends Enemy {
     this.image = new Image();
     this.image.src = "/images/RatKing.png";
     this.spd = 10; // How fast the unit moves per tick
-    this.moneyGained = 200;
+    this.moneyGained = 600;
   }
 }

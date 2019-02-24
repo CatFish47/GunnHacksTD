@@ -46,13 +46,17 @@ class Gunner extends Unit {
     super(x, y);
     this.name = "Gunner";
     this.range = 2;
-    this.dmg = 2;
+    this.dmg = 6;
     this.delay = 0.2; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
     this.image.src = "images/Gunner.png";
     this.cost = 100;
 
-    this.interval = setInterval(function() {}, this.delay * 1000);
+    var t = this;
+
+    this.interval = setInterval(function() {
+      t.attack();
+    }, this.delay * 1000);
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
@@ -72,11 +76,17 @@ class RingOfFire extends Unit {
     super(x, y);
     this.name = "Ring of Fire";
     this.range = 1;
-    this.dmg = 10;
+    this.dmg = 30;
     this.delay = 1; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
     this.image.src = "images/FireIn.png";
     this.cost = 290;
+
+    var t = this;
+
+    this.interval = setInterval(function() {
+      t.attack();
+    }, this.delay * 1000);
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
@@ -106,11 +116,7 @@ class Freezer extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
-    var inRange = this.scanEnemies(this.range);
 
-    if (inRange.length > 0) {
-      inRange[0].hp -= this.dmg;
-    }
   }
 }
 
@@ -140,11 +146,17 @@ class Wizard extends Unit {
     super(x, y);
     this.name = "Wizard";
     this.range = 3;
-    this.dmg = 5;
+    this.dmg = 15;
     this.delay = 4; // Amt of seconds it takes for the unit to attack again
     this.image = new Image();
     this.image.src = "/images/Wisard.png";
-    this.cost = 300;
+    this.cost = 200;
+
+    var t = this;
+
+    this.interval = setInterval(function() {
+      t.attack();
+    }, this.delay * 1000);
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack

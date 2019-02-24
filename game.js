@@ -86,16 +86,6 @@ function draw() {
   return 0;
 }
 
-function unitsAttack() {
-  for (var row in board.board) {
-    for (var col in board.board[row]) {
-      if (board.board[row][col].unit) {
-        board.board[row][col].unit.attack();
-      }
-    }
-  }
-}
-
 function checkDead() {
   for (var i in enemiesOnField) {
     if (enemiesOnField[i].hp <= 0) {
@@ -144,7 +134,6 @@ function moveEnemies() {
 }
 
 function update() {
-  unitsAttack();
   updateEnemies();
 }
 

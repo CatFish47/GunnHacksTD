@@ -1,6 +1,6 @@
 var c = 0;
 var startWaves;
-var speed = 1;
+var speed = false;
 
 function recalculateRoute() {
   route = board.solveMaze();
@@ -11,6 +11,7 @@ function spawnEnemy() {
     enemiesOnField.push(waves[wave][c]);
   } else {
     clearInterval(startWaves);
+    startWaves = 0;
   }
 
   c++;
@@ -23,10 +24,18 @@ function startNextWave() {
   startWaves = setInterval(spawnEnemy, 1000);
 }
 
-function doubleSpeed() {
-  if (speed == 1) {
-    speed = 2;
-  } else if (speed == 2) {
-    speed = 1;
+function unitAttack(unit) {
+  //board.board[row][col].unit.attack();
+}
+
+function isValid(tile) {
+  tile.placeWall();
+
+  if (board.solveMaze()[0] == 0) {
+    tile.wall = false;
+    tile.tile.src = "";
+    return false;
+  } else {
+    return true;
   }
 }

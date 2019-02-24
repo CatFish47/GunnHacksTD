@@ -9,8 +9,6 @@ class Enemy {
   move(spd) {
     var d = 8;
 
-    console.log(route);
-
     for (var i = 0; i < route.length; i++) {
 
       if (this.tileX == route[i].x && this.tileY == route[i].y) {
@@ -117,6 +115,25 @@ class Flyer extends Enemy {
     this.image.src = "/images/Spin.png";
     this.spd = 10; // How fast the unit moves per tick
     this.moneyGained = 50;
+  }
+
+  move(spd) {
+    var d = 8;
+
+    for (var i = 0; i < flyRoute.length; i++) {
+
+      if (this.tileX == flyRoute[i].x && this.tileY == flyRoute[i].y) {
+        if (flyRoute[i + 1].x > this.tileX) {
+          this.x += spd/d;
+        } else if (flyRoute[i + 1].x < this.tileX) {
+          this.x -= spd/d;
+        } else if (flyRoute[i + 1].y > this.tileY) {
+          this.y += spd/d;
+        } else if (flyRoute[i + 1].y < this.tileY) {
+          this.y -= spd/d;
+        }
+      }
+    }
   }
 }
 class TheUltimateBoss extends Enemy {

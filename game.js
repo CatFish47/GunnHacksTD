@@ -62,9 +62,17 @@ function drawEnemies() {
 }
 
 function drawScoreboard() {
-  context.fillText(`$${player.money}`, 1000, 100)
-  context.fillText(`Lives: ${player.money}`, 1000, 200)
-  context.fillText(`Wave: ${wave}`, 1000, 300)
+  context.fillText('$50', 180, 70);
+  context.fillText('$100', 180, 150);
+  context.fillText('$200', 180, 230);
+  context.fillText('$300', 180, 310);
+  context.fillText('$290', 180, 390);
+  context.fillText('$600', 180, 470);
+
+  context.font = "30px Arial";
+  context.fillText(`$${player.money}`, 900, 100)
+  context.fillText(`Lives: ${player.lives}`, 900, 200)
+  context.fillText(`Wave: ${wave + 1}`, 900, 300)
 }
 
 function draw() {
@@ -90,10 +98,18 @@ function unitsAttack() {
 
 function checkDead() {
   for (var i in enemiesOnField) {
-    player.money += enemiesOnField[i].moneyGained;
-
     if (enemiesOnField[i].hp <= 0) {
-      enemiesOnField.remove(enemiesOnField[i]);
+      player.money += enemiesOnField[i].moneyGained;
+      enemiesOnField.splice(i, 1);
+    }
+  }
+}
+
+function checkLivesLost() {
+  for (var i in enemiesOnField) {
+    if (enemiesOnField[i].y > 700) {
+      player.lives -= enemiesOnField[i].lives;
+      enemiesOnField.splice(i, 1);
     }
   }
 }
@@ -102,6 +118,7 @@ function updateEnemies() {
   checkDead();
   updateEnemyTiles();
   moveEnemies();
+  checkLivesLost();
 }
 
 function updateEnemyTiles() {

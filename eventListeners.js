@@ -29,36 +29,32 @@ document.addEventListener("click", function(e) {
       {
         if (storedUnit == "") {
           console.log(row, col)
-        } else if (storedUnit == "new Wall();") {
+        } else if (storedUnit == "new Wall(") {
+          player.money -= 50;
           board.board[row + 1][col].placeWall();
           recalculateRoute();
         } else if (board.board[row + 1][col].wall) {
+
           board.board[row + 1][col].placeUnit(eval(storedUnit + `${row + 1}, ${col});`));
-          if (storedUnit = "Wall();") {
-            money.player -= 50;
-          }
-          else if (storedUnit = "Gunner();") {
-            money.player -=100;
 
+          if (storedUnit == "new Gunner(") {
+            player.money -= 100;
           }
-          else if (storedUnit = "Wizard();") {
-            money.player -= 200;
-
+          else if (storedUnit == "new Wizard(") {
+            player.money -= 200;
           }
-          else if (storedUnit = "Freezer();") {
-                      money.player -= 300;
+          else if (storedUnit == "new Freezer(") {
+            player.money -= 300;
           }
-          else if (storedUnit = "RingOfFire();"){
-            money.player -= 290;
-
+          else if (storedUnit == "new RingOfFire("){
+            player.money -= 290;
           }
-          else if (storedUnit = "RingOfFire();"){
-            money.player -= 600;
-
+          else if (storedUnit == "new MoralSupporter("){
+            player.money -= 600;
           }
 
-
-
+          storedUnit = "";
+          console.log(storedUnit);
         }
       }
     }
@@ -66,25 +62,27 @@ document.addEventListener("click", function(e) {
 })
 
 document.addEventListener("click", function(e) {
+  console.log(storedUnit)
+
   if (mouseX > 100 && mouseX < 175 && mouseY > 50 && mouseY < 125) {
-    if (players.money>50){
-          storedUnit = "new Wall();";
+    if (player.money>50){
+          storedUnit = "new Wall(";
     }
   } else if (mouseX > 100 && mouseX < 175 && mouseY > 130 && mouseY < 205) {
-    if (players.money>100){
-          storedUnit = "new Gunner();";
+    if (player.money>100){
+          storedUnit = "new Gunner(";
     }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 210 && mouseY < 285) {
-      if (players.money>200){
-            storedUnit = "new Wizard();";
+      if (player.money>200){
+            storedUnit = "new Wizard(";
       }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 290 && mouseY < 365) {
-        if (players.money>300){
-              storedUnit = "new Freezer();";
+        if (player.money>300){
+              storedUnit = "new Freezer(";
         }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 370 && mouseY < 445) {
-          if (players.money>290){
-                storedUnit = "new RingOfFire();";
+          if (player.money>290){
+                storedUnit = "new RingOfFire(";
           }  } else if (mouseX > 100 && mouseX < 175 && mouseY > 450 && mouseY < 525) {
-            if (players.money>600){
-                  storedUnit = "new MoralSupporter();";
+            if (player.money>600){
+                  storedUnit = "new MoralSupporter(";
             }  } else if (mouseX > boardTopLeft.x && mouseX < boardTopLeft.x + 600 &&
               mouseY > boardTopLeft.y && mouseY < boardTopLeft.y + 600) {
   } else {
@@ -97,5 +95,12 @@ document.addEventListener("click", function(e) {
   if (mouseX > startButtonTopLeft.x && mouseX < startButtonBottomRight.x &&
       mouseY > startButtonTopLeft.y && mouseY < startButtonBottomRight.y) {
         startNextWave();
+      }
+})
+
+document.addEventListener("click", function(e) {
+  if (mouseX > speedUpTopLeft.x && mouseX < speedUpBottomRight.x &&
+      mouseY > speedUpTopLeft.y && mouseY < speedUpBottomRight.y) {
+        doubleSpeed();
       }
 })

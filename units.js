@@ -61,6 +61,8 @@ class Gunner extends Unit {
     if (inRange.length > 0) {
       inRange[0].hp -= this.dmg;
       this.image.src = "images/GunnerShooting.png";
+    } else {
+      this.image.src = "images/Gunner.png";
     }
   }
 }
@@ -78,7 +80,16 @@ class RingOfFire extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
+    var inRange = this.scanEnemies(this.range);
 
+    if (inRange.length > 0) {
+      for (var i in inRange) {
+        inRange[i].hp -= this.dmg;
+      }
+      this.image.src = "images/FireOut.png";
+    } else {
+      this.image.src = "images/FireIn.png";
+    }
   }
 }
 
@@ -95,7 +106,11 @@ class Freezer extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
+    var inRange = this.scanEnemies(this.range);
 
+    if (inRange.length > 0) {
+      inRange[0].hp -= this.dmg;
+    }
   }
 }
 
@@ -112,7 +127,11 @@ class MoralSupporter extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
+    var inRange = this.scanEnemies(this.range);
 
+    if (inRange.length > 0) {
+      inRange[0].hp -= this.dmg;
+    }
   }
 }
 
@@ -129,6 +148,12 @@ class Wizard extends Unit {
   }
 
   attack() { // This is here and not in the Unit class because each tower has a special attack
+    var inRange = this.scanEnemies(this.range);
 
+    if (inRange.length > 0) {
+      for (var i in inRange) {
+        inRange[i].hp -= this.dmg;
+      }
+    }
   }
 }
